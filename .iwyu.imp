@@ -1,0 +1,39 @@
+[
+    {
+        "include": [
+            "@<Eigen/src/Core/.*>",
+            "private",
+            "<Eigen/Core>",
+            "public"
+        ]
+    },
+    {
+        "include": [
+            "@<Eigen/src/Sparse/.*>",
+            "private",
+            "<Eigen/Sparse>",
+            "public"
+        ]
+    },
+    {   "symbol": [
+            "NULL",
+            "private",
+            "<cstddef>",
+            "public"
+        ]
+    },
+    {   "symbol": [
+            "EXIT_SUCCESS",
+            "private",
+            "<cstddef>",
+            "public"
+        ]
+    },
+    {   "symbol": [
+            "EXIT_FAILURE",
+            "private",
+            "<cstddef>",
+            "public"
+        ]
+    }
+]
