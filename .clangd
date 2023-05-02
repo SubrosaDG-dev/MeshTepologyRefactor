@@ -16,6 +16,5 @@ Diagnostics:
       performance-*,
       modernize-*,
       readability-*,
-      mpi-*,
       openmp-*,
     ]

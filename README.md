@@ -22,8 +22,8 @@ edgeStartNodeTag(size_t) edgeEndNodeTag(size_t) edgeLeftElement(size_t) edgeRigh
 numElements(size_t)
 nodeTag(size_t) ... (numNodeTag columns)
     ...(numElements rows)
-volumnOfElement(double)
-    ...(numElements rows)
 ```
 
 The problem can be abstracted as follows. Taking a 2D mesh as an example, we can view the mesh as a graph, with mesh nodes as the vertices of the graph and mesh edges as the edges of the graph. We assign directions to the edges based on the orientation of the elements (that is, when traversing the connectivity between elements and nodes, we assign a positive direction to an edge that is encountered for the first time, assuming that all elements in the mesh are oriented consistently in either a clockwise or counterclockwise direction). This creates a directed graph, and we can obtain its adjacency matrix. By traversing the adjacency matrix, we can reconstruct the boundary information of the 2D elements.
+
+The number of edges needs to be given in advance using the Euler formula, which is `R + V - E = 2`. Therefore, the number of holes in the mesh needs to be specified, which is the number of regions to be subtracted. You can understand the above formula as `R_in + R_out + R_mesh + V_mesh - E_mesh = 2`. For a regular mesh, `R_out = 1`, which means you need to input the value of `R_in` for the interior. The number of edges in the mesh is initialized using the above formula.

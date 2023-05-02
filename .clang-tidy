@@ -18,7 +18,7 @@ Checks: ' -*
 
 WarningsAsErrors: false
 
-HeaderFilterRegex: 'SubrosaDG\/(include|src|examples|tests)\/.*?\.(h|hpp|c|cpp)$'
+HeaderFilterRegex: 'MeshTepologyRefactor\/(include|src|example)\/.*?\.(h|hpp|c|cpp)$'
 
 FormatStyle: file
 

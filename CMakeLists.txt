@@ -70,7 +70,16 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/libs")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/libs")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/example/main.cpp)
+set(MESH_TEPOLOGY_REFACTOR_SOURCES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
+
+file(GLOB_RECURSE MESH_TEPOLOGY_REFACTOR_SOURCES CONFIGURE_DEPENDS
+    ${MESH_TEPOLOGY_REFACTOR_SOURCES_DIR}/*.cpp
+)
+
+add_executable(${PROJECT_NAME}
+    ${PROJECT_SOURCE_DIR}/example/main.cpp
+    ${MESH_TEPOLOGY_REFACTOR_SOURCES}
+)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include)
 
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
@@ -120,3 +129,6 @@ target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC ${TQDM_DIR})
 
 find_package(Eigen3 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PUBLIC Eigen3::Eigen)
+
+find_package(OpenMP REQUIRED)
+target_link_libraries(${PROJECT_NAME} PUBLIC OpenMP::OpenMP_CXX)

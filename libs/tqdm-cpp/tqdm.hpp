@@ -25,12 +25,11 @@
  *OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#define clamp(x, a, b) ((x) < (a) ? (a) : ((x) > (b) ? (b) : (x)))
-
 #include <chrono>
 #include <cmath>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 
 // -------------------- chrono stuff --------------------
 
@@ -89,7 +88,6 @@ public:
     {
         double proc = static_cast<double>(++progress_) /
           static_cast<double>(cycle_num_ - 1);
-        clamp(proc, 0, 1);
 
         if (time_since_refresh() > min_time_per_update_ || proc == 0 || proc == 1)
         {
